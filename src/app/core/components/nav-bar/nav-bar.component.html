@@ -1,0 +1,36 @@
+<div class="home-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar fxShow="true" color="#707070" class="mat-elevation-z8">
+    <mat-toolbar-row>
+      <div class="title" routerLink="home">
+        <img class="logoImg" src="../../../../assets/Jet-removebg-preview.png" alt="jet">
+        Air Somalia
+      </div>
+      <!-- <span class="menu-spacer"></span> -->
+      <div fxShow="true" fxHide.lt-md class="btns">
+        <button mat-button routerLink="/app/home">Home</button>
+        <button mat-button routerLink="/app/book">Flights</button>
+        <button mat-button routerLink="home">My bookings</button>
+        <button mat-button routerLink="home">About us</button>
+        <button mat-button routerLink="home">My profile</button>
+      </div>
+      <button mat-icon-button fxHide.gt-sm fxShow="true" (click)="sideNav.toggle()">
+        <mat-icon class="menu-icon">menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sideNav position="end">
+      <mat-nav-list>
+        <a mat-list-item [routerLinkActive]="'isActive'" routerLink="/app/home" (click)="sideNav.close()">Home</a>
+        <a mat-list-item [routerLinkActive]="'isActive'" routerLink="/app/book" (click)="sideNav.close()">Flights</a>
+        <a mat-list-item [routerLinkActive]="'isActive'" routerLink="/app/" (click)="sideNav.close()">My
+          bookings</a>
+        <a mat-list-item [routerLinkActive]="'isActive'" routerLink="/app/home" (click)="sideNav.close()">About us</a>
+        <a mat-list-item [routerLinkActive]="'isActive'" routerLink="/app/home" (click)="sideNav.close()">My profile</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

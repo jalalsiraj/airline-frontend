@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="box mat-elevation-z8">
+    <div class="logo">
+      <img src="../../../../assets/Jet-removebg-preview.png" alt="jet">
+      <h2>Air Somalia</h2>
+    </div>
+    <form [formGroup]="loginForm">
+      <div class="field" fxLayout="column" fxLayoutGap="10px">
+        <div class="input-field" fxLayout="row" fxLayoutAlign="start center">
+          <mat-label fxFlex="30%">Email</mat-label>
+          <mat-form-field appearance="outline" fxFlex="70%">
+            <input type="email" matInput formControlName="email">
+            <mat-error *ngIf="loginForm?.get('email')?.hasError('required')">
+              Email required
+            </mat-error>
+            <mat-error *ngIf="loginForm?.get('email')?.hasError('email')">
+              Invalid email
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-field" fxLayout="row" fxLayoutAlign="center center">
+          <mat-label fxFlex="30%">Password</mat-label>
+          <mat-form-field appearance="outline" fxFlex="70%">
+            <input [type]="pass ? 'text': 'password'" matInput formControlName="password">
+            <mat-icon (click)="showPass()" matSuffix *ngIf="!pass"
+              style="cursor: pointer; color: #707070;">visibility</mat-icon>
+            <mat-icon (click)="showPass()" matSuffix *ngIf="pass" style="cursor: pointer; color: #707070">visibility_off
+            </mat-icon>
+            <mat-error *ngIf="loginForm?.get('password')?.hasError('required')">
+              Password required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="login-btn" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="25px">
+          <div>
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+          </div>
+          <div class="links" fxLayout="row" fxLayoutGap="100px" fxLayoutAlign="center center">
+            <span><a href="#">Forget password</a> </span>
+            <span>New user? <a routerLink="/app/register">Register</a></span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

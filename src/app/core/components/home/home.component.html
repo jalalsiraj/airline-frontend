@@ -1,0 +1,116 @@
+<div class="container" fxLayout="column">
+  <section fxLayout="row" class="slider" fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10%">
+    <div fxLayout="row" fxFlex="40%" class="left-row" fxLayoutAlign="center center">
+      <img [@slideInFromLeft]="'in'" src="../../../../assets/homeFron1.png" alt="ppls">
+    </div>
+    <div fxFlex="60%" fxLayout="column" class="right-row" fxFlex.lt-sm="100%" fxLayoutGap.lt-sm="15%"
+      fxLayoutAlign="space-around" fxLayoutAlign.lt-sm="center center">
+      <div class="col1" fxLayout="column" fxLayoutGap="15%" fxLayoutAlign.lt-sm="center center">
+        <div class="line1" [@slideRightToLeft]>
+          <h1><span class="firstLetter">E</span>levating Your Journey</h1>
+        </div>
+        <div class="line2" [@slideRightToLeftPoint2]>
+          <h1><span class="firstLetter">E</span>very Mile of the Way...</h1>
+        </div>
+      </div>
+      <div class="col2" fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="0" fxLayoutGap.lt-sm="10%">
+        <div class="icon-pts" [@downToUpEnter-pt1] fxLayout="column" fxLayoutAlign="center center">
+          <img src="../../../../assets/timer.png" alt="on time">
+          <label>On Time</label>
+        </div>
+        <div class="icon-pts" [@downToUpEnter-pt2] fxLayout="column" fxLayoutAlign="center center">
+          <img src="../../../../assets/support.png" alt="24/7 Customer Support">
+          <label>24/7 Customer Support</label>
+        </div>
+        <div class="icon-pts" [@downToUpEnter-pt3] fxLayout="column" fxLayoutAlign="center center">
+          <img src="../../../../assets/process.png" alt="Quick Process">
+          <label>Quick Process</label>
+        </div>
+        <div class="icon-pts" [@downToUpEnter-pt4] fxLayout="column" fxLayoutAlign="center center">
+          <img src="../../../../assets/cutomersHand.png" alt="Over 2million Customers">
+          <label>Over 2million Customers</label>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </section>
+  <br>
+  <div class="heading-2" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
+    <h1>Our World Class Performance</h1>
+  </div>
+  <section class="mat-elevation-z4 fl-section" fxFlex="100%" fxLayout="row" fxLayout.lt-md="column">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="50%" class="fl-divs">
+      <div class="fl-1" fxFlex="50%%" fxLayout.lt-md="column">
+        <!-- <img src="../../../../assets/fl-img1.jfif" height="350px" alt="flight-image"> -->
+        <div class="insider">
+          <p>
+            In order to meet the needs of its customers, Norse Atlantic Airways has a flexible policy on flight changes.
+            A
+            change fee plus any fare difference must be paid in order to modify the flight schedule dates or routes.
+          </p>
+        </div>
+      </div>
+      <div class="fl-2" fxFlex="50%" fxLayout.lt-md="column">
+        <div class="insider">
+          <p>
+            Search our airport lounges around the world - the perfect place to switch off before you take off. Help
+            yourself to complimentary food and drinks, and rest, work or play before your flight.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxFlex="50%" class="fl-divs">
+      <div class="fl-3" fxFlex="50%" fxLayout.lt-md="column">
+        <div class="insider">
+          <p>
+            Every aspect of the terminal has been meticulously designed to enhance connectivity, minimise stress and
+            maximise the joy of exploration; like interconnected biometric systems and self-service kiosks for a
+            completely
+            digitised journey.
+          </p>
+        </div>
+      </div>
+      <div class="fl-4" fxFlex="50%" fxLayout.lt-md="column">
+        <div class="insider">
+          <p>
+            We understand that smooth journeys start with a seamless check-in. That’s why we’ve introduced dedicated
+            check-in areas, separate entrances, valet services and recommended parking areas for each cabin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="home-text-content mat-elevation-z4" fxFlex="100%" fxLayout.lt-sm="column">
+    <div class="left-row-text-content" fxFlex="40%" fxFlex.lt-sm="100%">
+
+    </div>
+    <div class="right-row-text-content" fxFlex="60%" fxFlex.lt-sm="100%">
+
+    </div>
+  </section>
+  <div class="heading-2" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
+    <h1>Try It Out</h1>
+  </div>
+  <section class="book-form mat-elevation-z4" fxLayout="row" fxLayoutAlign="space-between start"
+    fxLayoutAlign.lt-md="center center">
+    <app-book-ticket fxFlex="60%" fxFlex.lt-md="100%"></app-book-ticket>
+    <div fxFlex="40%" fxHide.lt-md>
+      <!-- <img src="../../../../assets/hope-page-gif/flying-airplane.gif" alt="" fxFlex="100%"> -->
+    </div>
+  </section>
+  <div class="heading-2" fxLayout="row" fxFlex="100%" fxLayoutAlign="center center">
+    <h1>Our Partners</h1>
+  </div>
+  <section class="marq-sect">
+    <div class="marquee-container">
+      <div fxLayout="row" fxLayoutGap="7%" class="marquee">
+        <div *ngFor="let item of partners" fxLayoutAlign="center center">
+          <img [src]="partnerBaseUrl+item?.path" alt="{{item?.name}}">
+        </div>
+        <div *ngFor="let item of partners" fxLayoutAlign="center center">
+          <img [src]="partnerBaseUrl+item?.path" alt="{{item?.name}}">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

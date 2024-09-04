@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="box mat-elevation-z8">
+    <div class="logo">
+      <img src="../../../../assets/Jet-removebg-preview.png" alt="jet">
+      <h2>Air Somalia</h2>
+    </div>
+    <form [formGroup]="registrationForm">
+      <div class="field" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5%" fxLayoutGap.lt-md="0">
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">First name</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput type="text" formControlName="firstName">
+            <mat-error *ngIf="registrationForm?.get('firstName')?.hasError('required')">
+              First name required
+            </mat-error>
+            <mat-error *ngIf="registrationForm?.get('firstName')?.hasError('pattern')">
+              First name cannot contain numbers
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Last name</mat-label>
+          <mat-form-field appearance="outline" fxFlex="60%">
+            <input matInput type="text" formControlName="lastName">
+            <mat-error *ngIf="registrationForm?.get('lastName')?.hasError('required')">
+              Last name required
+            </mat-error>
+            <mat-error *ngIf="registrationForm?.get('lastName')?.hasError('pattern')">
+              Last name cannot contain numbers
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="field" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5%" fxLayoutGap.lt-md="0">
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Gender</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <mat-select formControlName="gender">
+              <mat-option [value]="item" *ngFor="let item of gender">{{item}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="registrationForm?.get('gender')?.hasError('required')">
+              Gender required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Date of birth</mat-label>
+          <mat-form-field appearance="outline" fxFlex="60%">
+            <input matInput [matDatepicker]="dob" [max]="todayDate" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob></mat-datepicker>
+            <mat-error
+              *ngIf="registrationForm?.get('dateOfBirth')?.hasError('required') && !registrationForm?.get('dateOfBirth')?.hasError('matDatepickerParse') ">
+              Date of birth required
+            </mat-error>
+            <mat-error
+              *ngIf="registrationForm?.get('dateOfBirth')?.hasError('matDatepickerParse') || registrationForm?.get('dateOfBirth')?.hasError('matDatepickerMax')">
+              Invalid date
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="field" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5%" fxLayoutGap.lt-md="0">
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Email</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="registrationForm?.get('email')?.hasError('required')">
+              Email required
+            </mat-error>
+            <mat-error *ngIf="registrationForm?.get('email')?.hasError('email')">
+              Invalid email
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Alternate Email</mat-label>
+          <mat-form-field appearance="outline" fxFlex="60%">
+            <input matInput type="email" formControlName="alternateEmail">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="field" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5%" fxLayoutGap.lt-md="0">
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Password</mat-label>
+          <mat-form-field fxFlex="60%" appearance="outline">
+            <input matInput [type]="show ? 'text': 'password'" formControlName="password">
+            <mat-icon matSuffix (click)="showPassword()" style="cursor: pointer; color: #707070;"
+              *ngIf="!show">visibility</mat-icon>
+            <mat-icon matSuffix (click)="showPassword()" style="cursor: pointer; color: #707070;"
+              *ngIf="show">visibility_off</mat-icon>
+            <mat-error *ngIf="registrationForm?.get('password')?.hasError('required')">
+              Password required
+            </mat-error>
+            <mat-error *ngIf="registrationForm?.get('password')?.hasError('minlength')">
+              Password must contains atleast 8 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-input" fxLayout="row" fxFlex="50%" fxLayout.lt-md="column">
+          <mat-label fxFlex="40%">Confirm password</mat-label>
+          <mat-form-field appearance="outline" fxFlex="60%">
+            <input matInput [type]="confirmPassShow ? 'text': 'password'" formControlName="confirmPassword">
+            <mat-icon matSuffix (click)="showConfirmPassword()" style="cursor: pointer; color: #707070;"
+              *ngIf="!confirmPassShow">visibility</mat-icon>
+            <mat-icon matSuffix (click)="showConfirmPassword()" style="cursor: pointer; color: #707070;"
+              *ngIf="confirmPassShow">visibility_off</mat-icon>
+            <mat-error *ngIf="registrationForm?.get('confirmPassword')?.hasError('required')">
+              Password required
+            </mat-error>
+            <mat-error *ngIf="registrationForm?.get('confirmPassword')?.hasError('passwordMismatch')">
+              Password does not match!
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="register-btn" fxLayout="column" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" (click)="registerUser()">Register</button>
+        <br>
+        <p>Already a user? <a routerLink="/app/login">Login</a></p>
+      </div>
+    </form>
+  </div>
+</div>

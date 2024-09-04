@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="form-box mat-elevation-z8" fxLayoutAlign="center center" fxflex="100%" fxLayout="column">
+    <form fxLayout="column" fxLayoutGap="2%" fxFlex="100%">
+      <div class="selctors" fxFlex="100%" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap.lt-sm="0%">
+        <div class="trip-dropdown parent-drop">
+          <button id="contol-btns" matTooltip="Trip type" (click)="onclickTrip($event)">
+            <mat-icon>{{tripValue.icon}}</mat-icon>
+            {{tripValue.text}}
+            <mat-icon>keyboard_arrow_down</mat-icon></button>
+          <div *ngIf="tripClicked" class="drop-down mat-elevation-z8">
+            <ul>
+              <li *ngFor="let item of trip" fxLayout="row" fxLayoutAlign="center center" (click)="onSelectTrip(item)">
+                <button class="li-button" fxLayoutAlign="start center"
+                  fxLayoutGap="10%"><mat-icon>{{item.icon}}</mat-icon>{{item.text}}</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="guest-dropdown parent-drop">
+          <div fxLayout="column">
+            <button id="contol-btns" (click)="onGuestClick($event)">
+              <mat-icon>person</mat-icon>
+              {{totalPassengers}}
+              Guests
+              <mat-icon>keyboard_arrow_down</mat-icon></button>
+            <div class="guest-drop-box mat-elevation-z8" *ngIf="guestClicked" fxLayout="column">
+              <div *ngFor="let item of guestDropdownContents" fxLayout="row" fxFlex="100%" class="guest-elements">
+                <div fxLayout="column" fxFlex="70%">
+                  <h3>{{item.header}}</h3>
+                  <p>{{item.description}}</p>
+                </div>
+                <div fxLayout="row" fxFlex="30%" fxLayoutAlign="space-evenly center" class="guest-btns">
+                  <button
+                    (click)="addReduceGuestPersons(item, 'Reduce')"><mat-icon>remove_circle_outline</mat-icon></button>
+                  <p>{{item.value}}</p>
+                  <button [disabled]="addButtonEnabled"
+                    (click)="addReduceGuestPersons(item, 'Add')"><mat-icon>add_circle_outline</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="class-dropdown parent-drop">
+          <div fxLayout="column">
+            <button id="contol-btns"
+              (click)="onClickClass($event)">{{classValue}}<mat-icon>keyboard_arrow_down</mat-icon></button>
+            <div class="drop-down class-drop mat-elevation-z8" *ngIf="classClicked">
+              <ul>
+                <li *ngFor="let item of class" (click)="selectClass(item)">
+                  <button><mat-icon [ngStyle]="{'visibility': classValue == item ? 'visible': 'hidden'}"
+                      class="class-icon">check</mat-icon>{{item}}</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="input-fields" fxLayout="row" fxLayoutGap="3%" fxLayout.lt-md="column" fxFlex="100%">
+        <div fxFlex="50%" class="from-to-input">
+          <input type="text" id="flyingfrom" placeholder="">
+          <label for="flyingfrom" class="input-label">Flying from</label>
+        </div>
+        <div fxFlex="50%" class="from-to-input">
+          <input type="text" id="flyingTo" placeholder="">
+          <label for="flyingTo" class="input-label">Flying to</label>
+        </div>
+      </div>
+      <div class="col-3" fxLayout="row" fxFlex="100%" fxLayoutGap="3%" fxLayout.lt-md="column">
+        <div fxFlex="50%" fxLayoutGap="5%" class="date-inputs" fxLayout="row">
+          <div fxFlex="100%" class="bound-return-input">
+            <input type="text" matInput [matDatepicker]="bound" [min]="todayDate" placeholder=" " id="bound">
+            <label for="bound" class="input-label">Bound</label>
+            <mat-datepicker-toggle matSuffix [for]="bound"></mat-datepicker-toggle>
+            <mat-datepicker #bound></mat-datepicker>
+          </div>
+          <div fxFlex="50%" class="bound-return-input" *ngIf="tripValue.value == trip[1].value">
+            <input type="text" matInput [matDatepicker]="return" [min]="todayDate" placeholder=" " id="return">
+            <label for="return" class="input-label">Return</label>
+            <mat-datepicker-toggle matSuffix [for]="return"></mat-datepicker-toggle>
+            <mat-datepicker #return></mat-datepicker>
+          </div>
+        </div>
+        <div fxFlex="50%">
+        </div>
+      </div>
+      <div fxLayoutAlign="center center">
+        <button class="search-btn" mat-raised-button color="primary">Search Flights</button>
+      </div>
+    </form>
+  </div>
+</div>

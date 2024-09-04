@@ -1,0 +1,75 @@
+.container {
+  // padding: 40px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../../../assets/reg-bg.avif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box {
+  padding: 40px;
+  width: 400px;
+  height: 350px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+// input {
+//   height: 50px;
+//   padding: 10px;
+//   font-size: 16px;
+//   outline-color: #3F51B5;
+//   border: 0.5px solid #707070;
+//   border-radius: 5px;
+//   width: 100%;
+// }
+
+.login-btn {
+  margin-top: 5px;
+}
+
+// ::ng-deep mat-icon {
+//   position: relative;
+//   left: -30px;
+//   overflow: unset !important;
+//   max-width: 0;
+// }
+
+// p {
+//   margin: 0;
+// }
+
+a {
+  text-decoration: none;
+}
+
+::ng-deep button {
+  width: 120px !important;
+}
+
+.box .logo {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.box .logo img {
+  transform: scale(1.5);
+  height: 70px;
+  user-select: none;
+}
+
+.box .logo h2 {
+  margin: 0;
+  position: relative;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 35px;
+  letter-spacing: 1;
+}
